@@ -1,7 +1,19 @@
 const config: {
   plugins: never[];
-  theme: { extend: { colors: { background: string; foreground: string; accent: string } } };
-  content: string[]
+  theme: {
+    extend: {
+      colors: {
+        background: string;
+        foreground: string;
+        accent: {
+          light: string;
+          DEFAULT: string;
+          dark: string;
+        };
+      };
+    };
+  };
+  content: string[];
 } = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,10 +25,15 @@ const config: {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        accent: "var(--accent)",
+        accent: {
+          light: "var(--accent-light)",
+          DEFAULT: "var(--accent)",
+          dark: "var(--accent-dark)",
+        },
       },
     },
   },
   plugins: [],
 };
+
 export default config;
