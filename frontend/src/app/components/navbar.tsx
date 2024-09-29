@@ -61,7 +61,15 @@ function Navbar({ className }: { className?: string }) {
       )}
     >
       <Menu setActive={setActive}>
-        <div className="text-2xl font-bold">FINSIGHT</div>
+        <div
+          className="flex items-center cursor-pointer"
+          onClick={() => {
+            router.replace("/");
+          }}
+        >
+          <Image src="/logo.png" alt="/logo.png" width={50} height={50} />
+          <div className="text-2xl font-bold px-4">FINSIGHT</div>
+        </div>
         <SearchBar
           className="w-1/3 flex"
           placeholder="Search a Company"
