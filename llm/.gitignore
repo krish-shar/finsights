@@ -1,2 +1,10 @@
 /venv
 /EXPERIMENT
+# ignore .env
+.env
+
+#ignore everything inside venv
+.venv/
+
+# ignore python cache
+__pycache__/
