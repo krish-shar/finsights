@@ -117,8 +117,8 @@ function StockPage() {
       <button className = "relative -translate-y-2 text-xl font-semibold -py-1 px-3 bg-blue-500 text-white rounded-md">
             +
         </button>
-        <span className="absolute left-1/2 -translate-y-3 -translate-x-1/2 bottom-full mb-2 px-2 py-1 text-sm text-white bg-gray-800 rounded opacity-0 group-hover:opacity-50 transition-opacity">
-        Add to watchlist
+        <span className="absolute left-1/2 -translate-y-3 -translate-x-1/2 bottom-full mb-2 px-2 py-1 text-xs text-white bg-gray-800 rounded opacity-0 group-hover:opacity-50 transition-opacity">
+        Add {ticker} to watchlist
       </span>
         </div>
       </div>
