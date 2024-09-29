@@ -36,7 +36,7 @@ const SearchBar = ({
   return (
     <div
       className={cn(
-        "relative w-full h-10 bg-zinc-900 rounded-[29px] flex",
+        "relative w-full h-10 bg-zinc-800 rounded-[29px] flex",
         className,
       )}
     >
