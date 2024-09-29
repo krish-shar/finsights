@@ -8,10 +8,20 @@ import { CgProfile } from "react-icons/cg";
 //     Closes.push(parseFloat(closes[i]))
 // }
 import { createChart } from 'lightweight-charts';
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import LineChart from './chart.jsx'
+import { useForceUpdate } from "framer-motion";
 
 export default function Page() {
+
+    const [ticker, setTicker] = useState('AAPL');
+    const [inputValue, setInputValue] = useState('');
+    const handleKeyPress = (e: any) => {
+        if (e.key === 'Enter') {
+          setTicker(inputValue)
+        }
+      };
+
   return (
     <div className="flex flex-col min-h-screen p-4">
       {/* Top Section */}
@@ -35,7 +45,7 @@ export default function Page() {
 
       <div className="flex-grow flex items-center justify-center">
         <div className="w-full max-w-lg h-64">
-            <LineChart></LineChart>
+            <LineChart ticker = {ticker} ></LineChart>
         </div>
       </div>
     
@@ -44,6 +54,9 @@ export default function Page() {
           type="text"
           className="border rounded px-4 py-2 my-20 w-full"
           placeholder="New query"
+          value = {inputValue}
+          onChange = {(e) => setInputValue(e.target.value)}
+          onKeyDown = {handleKeyPress}
         />
       </div>
     </div>

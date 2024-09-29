@@ -2,16 +2,49 @@
 import { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 
-const LineChart = () => {
-  const chartRef = useRef(null);
 
+const LineChart = ({ ticker }) => {
+  const chartRef = useRef(null);
+//   const [loading, setLoading] = useState(true); // Loading state
+//   const [error, setError] = useState(null); // Error state
+//   const [stockData, setStockData] = useState([]); // State for the stock data
+
+//   const fetchStockData = async (ticker) => {
+//     const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${ticker}&apikey=${ALPHA_VANTAGE_API_KEY}`;
+
+//     try {
+//       const response = await axios.get(url);
+//       const timeSeries = response.data['Time Series (Daily)'];
+
+//       if (!timeSeries) {
+//         throw new Error('Invalid stock ticker or no data available.');
+//       }
+
+//       // Process the data into the format for ECharts (x-axis: dates, y-axis: prices)
+//       const formattedData = Object.keys(timeSeries).map((date) => ({
+//         date,
+//         close: parseFloat(timeSeries[date]['4. close']),
+//       }));
+
+//       // Sort the data by date (ascending)
+//       formattedData.reverse();
+
+//       setStockData(formattedData); // Set the stock data
+//       setLoading(false); // Set loading to false when data is fetched
+//     } catch (error) {
+//       console.error('Error fetching stock data:', error);
+//       setError('Failed to fetch stock data');
+//       setLoading(false);
+//     }
+//   };
+   
   useEffect(() => {
     const chartInstance = echarts.init(chartRef.current);
 
     // Set chart options
     const options = {
       title: {
-        text: 'Line Graph',
+        text: ticker + ' Market Summary',
       },
       tooltip: {
         trigger: 'axis',
