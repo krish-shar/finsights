@@ -9,8 +9,7 @@ import { CgProfile } from "react-icons/cg";
 // }
 import { createChart } from 'lightweight-charts';
 import React, { useEffect, useRef } from 'react';
-import { Chart } from "./chart.jsx"   
-
+import LineChart from './chart.jsx'
 
 export default function Page() {
   return (
@@ -22,7 +21,6 @@ export default function Page() {
             <CgProfile size={40}></CgProfile>
         </button>
 
-        {/* Right Section (Text Input and Plus Button) */}
         <div className="flex space-x-2">
           <input
             type="text"
@@ -35,12 +33,12 @@ export default function Page() {
         </div>
       </div>
 
-      {/* Middle Section (Text Box) */}
       <div className="flex-grow flex items-center justify-center">
-        <Chart></Chart>
+        <div className="w-full max-w-lg h-64">
+            <LineChart></LineChart>
+        </div>
       </div>
-
-      {/* Bottom Section (Text Input) */}
+    
       <div className="w-full self-center">
         <input
           type="text"
