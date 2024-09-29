@@ -1,6 +1,7 @@
 "use client";
 import SearchBar from "@/app/components/searchbar";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import TickerComponent from "@/app/components/tickers";
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
@@ -9,12 +10,12 @@ export default function Home() {
     <div className="flex flex-col justify-evenly h-screen px-8 pt-8 font-[family-name:var(--font-geist-sans)]">
       {user ? (
         <main className="flex flex-col gap-8 py-8 justify-center items-center">
-          <div className="pt-8">
+          <div className="pt-12">
             <TickerComponent></TickerComponent>
           </div>
           <h1>Hello, {user.name}!</h1>
           <div className="h-[30rem] flex items-center justify-center">
-            <TextHoverEffect text="Hello, User!" />
+            {/*<TextHoverEffect text="Hello, User!" />*/}
           </div>
           <SearchBar placeholder="Ask a Question" className="w-1/2 h-16" />
         </main>
