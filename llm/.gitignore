@@ -1,3 +1,5 @@
+/venv
+/EXPERIMENT
 # ignore .env
 .env
 
