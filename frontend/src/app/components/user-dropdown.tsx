@@ -1,7 +1,8 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { LogoutButton } from "@/app/components/buttons";
+import { DropdownButton } from "@/app/components/buttons";
 import { useRouter } from "next/navigation";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 // interface Option {
 //     label: string;
@@ -10,6 +11,7 @@ import { useRouter } from "next/navigation";
 
 const UserDropdown = ({ className }: { className?: string }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const { user, error, isLoading } = useUser();
   const router = useRouter();
   // const [options, setOptions] = useState<Option[]>([]);
   // const [user, setUser] = useState(null);
@@ -27,35 +29,6 @@ const UserDropdown = ({ className }: { className?: string }) => {
     router.push("/api/auth/logout");
   };
 
-  // const handleSignOut = () => {
-  //     router.push('/home');
-  //     resetUser();
-  // };
-  //
-  // const getOptions = (userType: string | null) => {
-  //     switch (userType) {
-  //         case "user":
-  //             return [
-  //                 {label: "Edit Profile", value: "/edit"},
-  //                 {label: "Order History", value: "/history"},
-  //                 {label: "Sign Out", value: "signout"},
-  //             ];
-  //         case "admin":
-  //             return [
-  //                 {label: "Edit Profile", value: "/edit"},
-  //                 {label: "Manage Users", value: "/manage/users"},
-  //                 {label: "Manage Movies", value: "/manage/movies"},
-  //                 {label: "Manage Promotions", value: "/manage/promotions"},
-  //                 {label: "Sign Out", value: "signout"},
-  //             ];
-  //         default:
-  //             return [
-  //                 {label: "Login", value: "/login"},
-  //                 {label: "Sign Up", value: "/register"},
-  //             ];
-  //     }
-  // };
-  //
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -63,40 +36,35 @@ const UserDropdown = ({ className }: { className?: string }) => {
     };
   }, []);
 
-  useEffect(() => {
-    console.log(dropdownOpen);
-  }, [dropdownOpen]);
-
-  // useEffect(() => {
-  //     setOptions(
-  //         getOptions(user == nullUser ? "guest" : user.admin ? "admin" : "user"),
-  //     );
-  // }, [user]);
-
   return (
     <div className={className}>
       <div
         onClick={() => {
-          setDropdownOpen(!dropdownOpen);
+          if (!dropdownOpen) {
+            setDropdownOpen(true);
+          }
         }}
       >
         <img
-          className="w-12 h-12 rounded-full"
-          src="https://toolset.com/wp-content/uploads/2018/06/909657-profile_pic.png"
+          className="w-12 h-12 cursor-pointer"
+          src="https://cdn-icons-png.freepik.com/512/7835/7835466.png"
           alt="https://via.placeholder.com/50x50"
         />
       </div>
-      <div className="absolute pt-2 right-[6vw]">
+      <div className="absolute pt-2 right-0">
         {dropdownOpen && (
           <div
             ref={ref}
-            className="bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
+            className="bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-accent-dark shadow-xl"
           >
             <div className="w-max h-full p-4">
               <div className="flex flex-col space-y-4">
                 <div className="flex flex-col space-y-4">
-                  <div className="text-lg font-bold">John Doe</div>
-                  <LogoutButton onClick={handleLogout} />
+                  <div className="text-xl font-bold">
+                    {user && user["name"]}
+                  </div>
+                  <DropdownButton text="Watching" onClick={() => {}} />
+                  <DropdownButton text="Logout" onClick={handleLogout} />
                   <div className="text-sm"></div>
                 </div>
               </div>

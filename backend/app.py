@@ -260,13 +260,17 @@ def ensure_stock_embedded(ticker, vectorstore: Vectorstore):
         
         # Retrieve and embed new documents
         raw_documents = []
-        raw_documents += get_all_filings(ticker)
-        raw_documents += get_benzinga_news(ticker)
-        raw_documents += get_yahoo_news(ticker)
-        
-        vectorstore.add_documents(raw_documents)
-        vectorstore.embed()
-        vectorstore.index()
+        try:
+            raw_documents += get_all_filings(ticker)
+            raw_documents += get_benzinga_news(ticker)
+            raw_documents += get_yahoo_news(ticker)
+
+            vectorstore.add_documents(raw_documents)
+            vectorstore.embed()
+            vectorstore.index()
+        except Exception as e:
+            print(f"Error embedding documents for {ticker}: {e}")
+            return
         
         # Add to the list of embedded stocks
         embedded_stocks.append(ticker)
@@ -338,9 +342,14 @@ def chat():
         model="llama-3.1-sonar-large-128k-online",
         messages=messages
     )
-
+    print({"response": response.choices[0].message.content})
     return {"response": response.choices[0].message.content}
 
+@app.route('/test_chat', methods=['POST'])
+def test_chat():
+    data = request.json
+    message = data.get('message')
+    return {"response": message}
 
 # @app.route('/predict', methods=['GET', 'POST'])
 # def predict():

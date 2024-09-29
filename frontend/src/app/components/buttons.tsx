@@ -30,15 +30,17 @@ export const LoginButton = ({
   );
 };
 
-export const LogoutButton = ({
+export const DropdownButton = ({
+  text,
   onClick,
 }: {
+  text: string;
   onClick: (event: React.MouseEvent<HTMLElement>) => void;
 }) => {
   return (
     <button className="p-[3px] relative" onClick={onClick}>
-      <div className="px-4 py-2 bg-black rounded-full relative group transition duration-300 text-white hover:bg-transparent">
-        Logout
+      <div className="px-4 bg-black rounded-full relative group transition duration-300 text-white text-xl font-bold hover:bg-transparent">
+        {text}
       </div>
     </button>
   );
