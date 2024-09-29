@@ -1,6 +1,5 @@
-import Image from "next/image";
 import SearchBar from "@/app/components/searchbar";
-import {CompanyButton} from "@/app/components/buttons";
+import { CompanyButton } from "@/app/components/buttons";
 
 export default function Home() {
   return (
@@ -11,7 +10,7 @@ export default function Home() {
           <CompanyButton company={"Alphabet"} />
           <CompanyButton company={"Meta"} />
         </div>
-        <SearchBar placeholder="Ask a Question" className="w-1/2 h-16"/>
+        <SearchBar placeholder="Ask a Question" className="w-1/2 h-16" />
       </main>
     </div>
   );
