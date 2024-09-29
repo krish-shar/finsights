@@ -10,11 +10,11 @@
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^3.5.0",
-    "bcryptjs": "^2.4.3",
     "clsx": "^2.1.1",
+    "echarts": "^5.5.1",
     "framer-motion": "^11.9.0",
-    "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.9.0",
+    "lightweight-charts": "^4.2.0",
     "next": "14.2.13",
     "prettier": "^3.3.3",
     "react": "^18",
