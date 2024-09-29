@@ -53,13 +53,13 @@ function Navbar({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "fixed items-center top-2 inset-x-0 max-w-8xl max-h-24 z-50",
+        "fixed items-center top-2 inset-x-0 max-w-8xl max-h-24 z-5",
         className,
       )}
     >
       <Menu setActive={setActive}>
         <div
-          className="flex items-center cursor-pointer"
+          className="flex items-center cursor-pointer z-20"
           onClick={() => {
             router.replace("/");
           }}
@@ -68,14 +68,18 @@ function Navbar({ className }: { className?: string }) {
           <div className="text-2xl font-bold px-4">FINSIGHT</div>
         </div>
         <SearchBar
-          className="w-1/3 flex"
+          className="absolute w-1/3 flex left-1/2 transform -translate-x-1/2 z-10"
           search={search}
           setSearch={setSearch}
           placeholder="Search a Company"
           icon={FaSearch}
           handleSearch={handleSearch}
         />
-        {user ? <UserDropdown /> : <LoginButton onClick={handleLogin} />}
+        {user ? (
+          <UserDropdown className="z-20" />
+        ) : (
+          <LoginButton onClick={handleLogin} className="z-20" />
+        )}
       </Menu>
     </div>
   );

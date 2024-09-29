@@ -27,13 +27,13 @@ export default function Home() {
             The best place to get financial insights!
           </h2>
           <h2 className="w-full text-2xl text-center">
-            Please login to Continue
+            Please Login or Signup to Continue
           </h2>
           <button
             onClick={() => {
               window.location.href = "/api/auth/login";
             }}
-            className="px-4 py-2 text-lg font-bold text-white bg-blue-500 rounded-lg"
+            className="px-4 py-2 text-lg font-bold text-white bg-accent-dark hover:brightness-90 rounded-lg"
           >
             Login
           </button>

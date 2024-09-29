@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 //     value: string;
 // }
 
-const UserDropdown = () => {
+const UserDropdown = ({ className }: { className?: string }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const router = useRouter();
   // const [options, setOptions] = useState<Option[]>([]);
@@ -74,7 +74,7 @@ const UserDropdown = () => {
   // }, [user]);
 
   return (
-    <div>
+    <div className={className}>
       <div
         onClick={() => {
           setDropdownOpen(!dropdownOpen);
