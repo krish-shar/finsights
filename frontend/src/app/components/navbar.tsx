@@ -21,19 +21,9 @@ const transition = {
   restSpeed: 0.001,
 };
 
-// export function NavbarDemo() {
-//   return (
-//     <div className="relative w-full flex items-center justify-center">
-//       <Navbar className="top-2" />
-//       <p className="text-black dark:text-white">
-//         The Navbar will show on top of the page
-//       </p>
-//     </div>
-//   );
-// }
-
 function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
+  const [search, setSearch] = React.useState("");
   const { user, error, isLoading } = useUser();
   const router = useRouter();
 
@@ -51,6 +41,13 @@ function Navbar({ className }: { className?: string }) {
 
   const handleLogin = () => {
     router.push("/api/auth/login");
+  };
+
+  const handleSearch = () => {
+    if (search.trim()) {
+      router.push(`/search?ticker=${search.trim().toUpperCase()}`);
+    }
+    setSearch("");
   };
 
   return (
@@ -72,8 +69,11 @@ function Navbar({ className }: { className?: string }) {
         </div>
         <SearchBar
           className="w-1/3 flex"
+          search={search}
+          setSearch={setSearch}
           placeholder="Search a Company"
           icon={FaSearch}
+          handleSearch={handleSearch}
         />
         {user ? <UserDropdown /> : <LoginButton onClick={handleLogin} />}
       </Menu>

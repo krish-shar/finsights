@@ -28,6 +28,7 @@ out/
 
 # misc
 /frontend/.DS_Store
+*venv*
 *.pem
 
 # debug

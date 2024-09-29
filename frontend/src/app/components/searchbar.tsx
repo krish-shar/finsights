@@ -3,30 +3,32 @@ import React from "react";
 import { FaArrowCircleRight } from "react-icons/fa";
 import { IconType } from "react-icons";
 import { cn } from "@/app/lib/utils";
-import { useRouter } from 'next/navigation';
 
 const SearchBar = ({
   className,
+  search,
+  setSearch,
   icon: Icon = FaArrowCircleRight,
   placeholder = "Search",
+  handleSearch,
 }: {
   className?: string;
+  search?: string;
+  setSearch?: (search: string) => void;
   icon?: IconType;
   placeholder?: string;
+  handleSearch: () => void;
 }) => {
-  const [search, setSearch] = React.useState("");
-  const router = useRouter();
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.currentTarget.value);
   };
 
-  const handleSearch = () => {
-    if (search.trim()) {
-      router.push(`/search?ticker=${search.trim().toUpperCase()}`);
-    }
-    setSearch("");
-  };
+  // const handleSearch = () => {
+  //   if (search.trim()) {
+  //     router.push(`/search?ticker=${search.trim().toUpperCase()}`);
+  //   }
+  //   setSearch("");
+  // };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
@@ -46,6 +48,7 @@ const SearchBar = ({
         placeholder={placeholder}
         value={search}
         onChange={handleChange}
+        onClick={handleSearch}
         onKeyDown={handleKeyPress}
       />
       <button className="absolute inset-y-0 right-[5%]" onClick={handleSearch}>

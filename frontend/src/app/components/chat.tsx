@@ -6,11 +6,17 @@ import Image from "next/image";
 export default function Chat() {
   const chatAdapter: ChatAdapter = {
     streamText: async (prompt: string, observer: StreamingAdapterObserver) => {
-      const response = await fetch("/api/chat", {
+      // const response = await fetch("/api/chat", {
+      //   method: "POST",
+      //   body: JSON.stringify({ prompt: prompt }),
+      //   headers: { "Content-Type": "application/json" },
+      // });
+      const response = await fetch("http://localhost:8080/chat", {
         method: "POST",
         body: JSON.stringify({ prompt: prompt }),
         headers: { "Content-Type": "application/json" },
       });
+
       if (response.status !== 200) {
         observer.error(new Error("Failed to connect to the server"));
         return;
