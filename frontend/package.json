@@ -14,12 +14,9 @@
     "echarts": "^5.5.1",
     "express": "^4.21.0",
     "framer-motion": "^11.9.0",
-<<<<<<< HEAD
     "fs": "^0.0.1-security",
-=======
-    "mongodb": "^6.9.0",
->>>>>>> d24856106f43a5dd27b3fda3967d640babb5bcb0
     "lightweight-charts": "^4.2.0",
+    "mongodb": "^6.9.0",
     "net": "^1.0.2",
     "next": "14.2.13",
     "prettier": "^3.3.3",
