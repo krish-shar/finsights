@@ -173,8 +173,8 @@ def get_yahoo_news(ticker):
     response = requests.get(URL, headers=headers)
     soup = BeautifulSoup(response.text, 'html.parser')
     
-    body = soup.find('div', class_='filtered-stories x-large yf-ovk92u rulesBetween infiniteScroll')
-    news_list = body.find_all('li', class_="stream-item yf-ovk92u")
+    # body = soup.find('div', class_='filtered-stories x-large yf-ovk92u rulesBetween infiniteScroll')
+    news_list = soup.find_all('li', class_="stream-item yf-ovk92u")
     
     end = min(len(news_list), 25)
     ans = []

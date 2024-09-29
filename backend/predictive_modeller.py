@@ -1,4 +1,5 @@
 import math
+import pandas_datareader as web
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
@@ -166,8 +167,8 @@ def predict(ticker, startParam = None, endParam = None):
     plt.xlim(train_2024.index[0], df_ans.index[-1])
 
     # Add a legend
-    plt.legend(loc='lower right')
-    plt.show()
+    # plt.legend(loc='lower right')
+    # plt.show()
 
     # add to cache
     cache[(ticker, startParam, endParam)] = [valid_2024, df_ans]
@@ -176,5 +177,5 @@ def predict(ticker, startParam = None, endParam = None):
     return [valid_2024, df_ans]
 
 
-print(predict("AAPL"))
-print(predict("AAPL"))
+# print(predict("AAPL"))
+# print(predict("AAPL"))
