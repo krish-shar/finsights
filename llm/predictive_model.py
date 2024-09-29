@@ -177,5 +177,5 @@ def predict(ticker, startParam = None, endParam = None):
     return [valid_2024, df_ans]
 
 
-# print(predict("AAPL"))
-# print(predict("AAPL"))
+print(predict("AAPL"))
+print(predict("AAPL"))
