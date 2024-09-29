@@ -2,22 +2,31 @@
 import SearchBar from "@/app/components/searchbar";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import TickerComponent from "@/app/components/tickers";
+import { TextHoverEffect } from "@/app/components/text-hover-effect";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
+  const router = useRouter();
 
   return (
     <div className="flex flex-col justify-evenly h-screen px-8 pt-8 font-[family-name:var(--font-geist-sans)]">
       {user ? (
         <main className="flex flex-col gap-8 py-8 justify-center items-center">
-          <div className="pt-12">
+          <div className="pt-8">
             <TickerComponent></TickerComponent>
           </div>
-          <h1>Hello, {user.name}!</h1>
+          <h1 className="text-4xl">Hello, {user.name}!</h1>
           <div className="h-[30rem] flex items-center justify-center">
             {/*<TextHoverEffect text="Hello, User!" />*/}
           </div>
-          <SearchBar placeholder="Ask a Question" className="w-1/2 h-16" />
+          <SearchBar
+            placeholder="Ask a Question"
+            handleSearch={() => {
+              router.push("/chat");
+            }}
+            className="w-1/2 h-16"
+          />
         </main>
       ) : (
         <div className="flex flex-col justify-center h-1/2 space-y-4">
