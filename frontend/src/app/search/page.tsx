@@ -109,10 +109,19 @@ function StockPage() {
         return tickItem;
     }
   };
-
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4">
+        <div className = "flex items-center space-x-2 mb-4">
       <h1 className="text-2xl font-bold mb-4">{ticker} Stock Price</h1>
+      <div className = "relative group">
+      <button className = "relative -translate-y-2 text-xl font-semibold -py-1 px-3 bg-blue-500 text-white rounded-md">
+            +
+        </button>
+        <span className="absolute left-1/2 -translate-y-3 -translate-x-1/2 bottom-full mb-2 px-2 py-1 text-xs text-white bg-gray-800 rounded opacity-0 group-hover:opacity-50 transition-opacity">
+        Add {ticker} to watchlist
+      </span>
+        </div>
+      </div>
       <div className="w-full max-w-4xl h-96">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
