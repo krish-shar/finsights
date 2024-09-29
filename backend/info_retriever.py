@@ -37,9 +37,10 @@ def get_top_thirteen_f_helper():
         
     return holdings
 
-thirteen_f_holdings = get_top_thirteen_f_helper()
+# thirteen_f_holdings = get_top_thirteen_f_helper()
+thirteen_f_holdings = {}
 def get_top_thirteen_f():
-    return thirteen_f_holdings
+    return thirteen_f_holdings if thirteen_f_holdings else {}
 
 def get_earnings_report(ticker, year, quarter):
     report = "10-Q"
